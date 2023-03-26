@@ -12,13 +12,21 @@
            <li class=" cursor-pointer mt-2">
            Signin
            </li>
+           <div>
+            <NuxtLink to="/cart">
            <Icon class="text-green-500 text-3xl mt-1" name="ph:shopping-cart-fill" />
+           <span class="bg-green-500 rounded-full text-white font-bold px-1">{{cart.count}}</span>
+              </NuxtLink>
+           </div>
          </ul>
         </div>
     </div>
 </template>
-<script>
+<script setup>
+import { useCartStore } from '~~/store/cart'
+const cart = useCartStore()
 </script>
+
 <style scoped>
 .router-link-active {
     color: #22c55e;

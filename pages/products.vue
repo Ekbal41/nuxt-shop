@@ -15,7 +15,8 @@
                             <p class="text-2xl text-green-500 capitalize ">{{ product.title }}</p>
                             <div class="flex gap-2 justify-center">
                                 <p class="text-3xl text-green-500 capitalize ">{{ product.price }}</p>
-                                <Icon class="text-green-500 text-3xl mt-1" name="material-symbols:add-circle" />
+                                <Icon class="text-green-500 text-3xl mt-1 cursor-pointer" name="material-symbols:add-circle"
+                                    @click="addtocart(product)" />
                             </div>
                         </div>
 
@@ -32,5 +33,11 @@
     </div>
 </template>
 <script setup>
+import { useCartStore } from '~~/store/cart';
 const { data: products } = useFetch('https://fakestoreapi.com/products')
+const cart = useCartStore()
+const addtocart = (product) => {
+    cart.addItem(product)
+    cart.increment()
+}
 </script>
