@@ -21,6 +21,9 @@ export const useCartStore = defineStore('cart', {
         removeFromCart(id) {
             const newitem = this.item.filter(item => item.id !== id)
             this.item = newitem
-        }
+        },
+        getTolalAmount() {
+            return this.item.reduce((acc, item) => acc + item.price, 0)
+        },
     },
 })
